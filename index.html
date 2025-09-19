@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lsoftware - Charlas Motivacionales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos CSS existentes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #e74c3c;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            margin-right: 10px;
+            color: var(--warning);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            background: var(--primary);
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-icon i {
+            font-size: 2.5rem;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card:before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: rgba(231, 76, 60, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-info span {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Forum Section */
+        .forum {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .forum-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .forum-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+        }
+        
+        .forum-header h3 {
+            font-size: 1.8rem;
+        }
+        
+        .forum-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .forum-tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .forum-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .forum-tab:hover {
+            background: #f8f9fa;
+        }
+        
+        .forum-content {
+            padding: 30px;
+        }
+        
+        .forum-post {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .forum-post:last-child {
+            border-bottom: none;
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .post-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .post-meta {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .post-actions a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .post-actions a:hover {
+            color: var(--primary);
+        }
+        
+        .new-post-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .new-post-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--warning);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: none;
+        }
+        
+        .form-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Estilos para el modal de testimonios */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--primary);
+        }
+        
+        .testimonial-form h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .testimonial-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .testimonial-form input,
+        .testimonial-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .testimonial-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .testimonial-form .form-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-form .form-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .add-testimonial-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        .add-testimonial-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <h1>lsotware</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#foro">Foro</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Transforma tu vida con charlas motivacionales</h2>
+            <p>Descubre tu potencial y alcanza metas que nunca imaginaste posibles</p>
+            <a href="#servicios" class="btn">Conoce mis servicios</a>
+            <a href="#testimonios" class="btn btn-outline">Ver testimonios</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Mí</h2>
+                <p>Conoce al conferencista que cambiará tu perspectiva</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Catalina Martínez - Conferencista Motivacional</h3>
+                    <p>Con más de 15 años de experiencia en desarrollo personal y profesional, he ayudado a miles de personas a descubrir su propósito y alcanzar sus metas.</p>
+                    <p>Mis charlas combinan psicología positiva, neurociencia y experiencias reales para crear transformaciones duraderas. He trabajado con empresas Fortune 500, universidades y organizaciones sin fines de lucro.</p>
+                    <p>Mi misión es inspirar a las personas a salir de su zona de confort y crear la vida que realmente desean.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Catalina Martínez">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mis Servicios</h2>
+                <p>Charlas diseñadas para transformar vidas</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Charlas Corporativas</h3>
+                        <p>Programas diseñados para empresas que buscan mejorar el rendimiento, la motivación y el trabajo en equipo de sus colaboradores.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Conferencias Educativas</h3>
+                        <p>Charlas para estudiantes y docentes sobre desarrollo de habilidades blandas, liderazgo y preparación para el futuro.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Eventos Públicos</h3>
+                        <p>Conferencias abiertas al público sobre temas de crecimiento personal, superación personal y desarrollo de habilidades.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Charlas Virtuales</h3>
+                        <p>Conferencias en línea con interacción en tiempo real, diseñadas para audiencias globales con diferentes husos horarios.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Coaching Personal</h3>
+                        <p>Sesiones individuales de coaching para desarrollo personal, profesional y superación de obstáculos específicos.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Talleres Prácticos</h3>
+                        <p>Formación intensiva con herramientas prácticas que los participantes pueden aplicar inmediatamente en sus vidas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimonios</h2>
+                <p>Lo que dicen quienes han transformado sus vidas</p>
+            </div>
+            
+            <!-- Botón para agregar testimonio -->
+            <button id="addTestimonialBtn" class="add-testimonial-btn">
+                <i class="fas fa-plus"></i> Agregar Testimonio
+            </button>
+            
+            <!-- Contenedor para testimonios -->
+            <div id="testimonialContainer" class="testimonial-grid">
+                <!-- Testimonios iniciales -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">La charla de Catalina cambió mi perspectiva por completo. Después de 10 años estancado en mi carrera, finalmente encontré el valor para hacer el cambio que necesitaba.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Mendoza" class="author-img">
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <span>Director de Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Contratamos a Catalina para nuestra convención anual y fue la mejor inversión. Su energía es contagiosa y su mensaje realmente impactó a todo nuestro equipo.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Laura Fernández" class="author-img">
+                        <div class="author-info">
+                            <h4>Laura Fernández</h4>
+                            <span>CEO, TechSolutions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Como estudiante, asistí a su conferencia en la universidad y fue un punto de inflexión en mi vida. Ahora tengo claridad sobre mi futuro y las herramientas para alcanzarlo.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Roberto Gómez" class="author-img">
+                        <div class="author-info">
+                            <h4>Roberto Gómez</h4>
+                            <span>Estudiante de Ingeniería</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forum Section -->
+    <section id="foro" class="forum">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comunidad y Foro</h2>
+                <p>Comparte experiencias y conecta con otros</p>
+            </div>
+            <div class="forum-container">
+                <div class="forum-header">
+                    <h3>Foro de Discusión</h3>
+                </div>
+                <div class="forum-tabs">
+                    <div class="forum-tab active">Discusiones Recientes</div>
+                    <div class="forum-tab">Más Populares</div>
+                    <div class="forum-tab">Sin Respuestas</div>
+                </div>
+                <div class="forum-content">
+                    <div class="forum-post">
+                        <div class="post-header">
+                            <div>
+                                <div class="post-title">¿Cómo superar el miedo al cambio?</div>
+                                <div class="post-meta">Publicado por <strong>María López</strong> - Hace 2 horas</div>
+                            </div>
+                            <div class="post-actions">
+                                <a href="#"><i class="fas fa-comment"></i> 12 respuestas</a>
+                                <a href="#"><i class="fas fa-heart"></i> 45</a>
+                            </div>
+                        </div>
+                        <p>Estoy en un punto de mi vida donde sé que necesito un cambio, pero el miedo me paraliza. ¿Alguien ha pasado por esto y tiene consejos?</p>
+                    </div>
+                    <div class="forum-post">
+                        <div class="post-header">
+                            <div>
+                                <div class="post-title">Recomendaciones de libros de desarrollo personal</div>
+                                <div class="post-meta">Publicado por <strong>Juan Pérez</strong> - Hace 1 día</div>
+                            </div>
+                            <div class="post-actions">
+                                <a href="#"><i class="fas fa-comment"></i> 28 respuestas</a>
+                                <a href="#"><i class="fas fa-heart"></i> 67</a>
+                            </div>
+                        </div>
+                        <p>Estoy buscando libros que realmente hayan impactado su vida. ¿Cuáles me recomiendan?</p>
+                    </div>
+                    <div class="forum-post">
+                        <div class="post-header">
+                            <div>
+                                <div class="post-title">Experiencias después de la charla de Catalina</div>
+                                <div class="post-meta">Publicado por <strong>Ana García</strong> - Hace 3 días</div>
+                            </div>
+                            <div class="post-actions">
+                                <a href="#"><i class="fas fa-comment"></i> 34 respuestas</a>
+                                <a href="#"><i class="fas fa-heart"></i> 89</a>
+                            </div>
+                        </div>
+                        <p>Asistí a la charla "Despierta tu Potencial" hace un mes y quiero compartir los cambios increíbles que he experimentado...</p>
+                    </div>
+                    <button class="new-post-btn">Crear Nueva Discusión</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>Conectemos y transformemos vidas juntos</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Av. Inspira 123, Ciudad del Conocimiento</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+1 (234) 567-8901</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contacto@impulsovital.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horario de Atención</h4>
+                            <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envíame un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Tu Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Tu Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Asunto">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tu Mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="form-btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Impulso Vital</h4>
+                    <p>Transformando vidas a través de charlas motivacionales y desarrollo personal desde 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#foro">Foro</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Charlas Corporativas</a></li>
+                        <li><a href="#">Conferencias Educativas</a></li>
+                        <li><a href="#">Eventos Públicos</a></li>
+                        <li><a href="#">Charlas Virtuales</a></li>
+                        <li><a href="#">Coaching Personal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Boletín Informativo</h4>
+                    <p>Suscríbete para recibir contenido exclusivo y actualizaciones sobre próximos eventos.</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Tu Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: none;">
+                        <button type="submit" class="btn" style="padding: 10px 20px; background: var(--primary);">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Impulso Vital. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para agregar testimonio -->
+    <div id="testimonialModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="testimonial-form">
+                <h3>Comparte tu Testimonio</h3>
+                <form id="newTestimonialForm">
+                    <div class="form-group">
+                        <label for="testimonialName">Nombre Completo</label>
+                        <input type="text" id="testimonialName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialEmail">Correo Electrónico</label>
+                        <input type="email" id="testimonialEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialPosition">Profesión/Cargo</label>
+                        <input type="text" id="testimonialPosition" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialText">Tu Testimonio</label>
+                        <textarea id="testimonialText" required></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Enviar Testimonio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Forum tabs functionality
+        const tabs = document.querySelectorAll('.forum-tab');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Here you would typically load different content based on the tab
+                // For demo purposes, we'll just show an alert
+                console.log(`Tab clicked: ${tab.textContent}`);
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create success message
+            const successMsg = document.createElement('div');
+            successMsg.style.position = 'fixed';
+            successMsg.style.top = '20px';
+            successMsg.style.right = '20px';
+            successMsg.style.background = 'var(--success)';
+            successMsg.style.color = 'white';
+            successMsg.style.padding = '15px 25px';
+            successMsg.style.borderRadius = '5px';
+            successMsg.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            successMsg.style.zIndex = '10000';
+            successMsg.textContent = '¡Mensaje enviado con éxito! Te responderé pronto.';
+            
+            document.body.appendChild(successMsg);
+            
+            // Reset form
+            this.reset();
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMsg.remove();
+            }, 5000);
+        });
+
+        // Newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create success message
+            const successMsg = document.createElement('div');
+            successMsg.style.position = 'fixed';
+            successMsg.style.top = '20px';
+            successMsg.style.right = '20px';
+            successMsg.style.background = 'var(--success)';
+            successMsg.style.color = 'white';
+            successMsg.style.padding = '15px 25px';
+            successMsg.style.borderRadius = '5px';
+            successMsg.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            successMsg.style.zIndex = '10000';
+            successMsg.textContent = '¡Suscripción exitosa! Gracias por unirte a nuestra comunidad.';
+            
+            document.body.appendChild(successMsg);
+            
+            // Reset form
+            this.reset();
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMsg.remove();
+            }, 5000);
+        });
+        
+        // Modal functionality for testimonials
+        const modal = document.getElementById('testimonialModal');
+        const btn = document.getElementById('addTestimonialBtn');
+        const span = document.getElementsByClassName('close')[0];
+        
+        // Open modal when button is clicked
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+        
+        // Close modal when X is clicked
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Handle testimonial form submission
+        document.getElementById('newTestimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('testimonialName').value;
+            const email = document.getElementById('testimonialEmail').value;
+            const position = document.getElementById('testimonialPosition').value;
+            const text = document.getElementById('testimonialText').value;
+            
+            // Create testimonial object
+            const testimonial = {
+                name: name,
+                email: email,
+                position: position,
+                text: text,
+                date: new Date().toISOString()
+            };
+            
+            // Save to localStorage
+            let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+            testimonials.push(testimonial);
+            localStorage.setItem('testimonials', JSON.stringify(testimonials));
+            
+            // Create new testimonial card
+            const testimonialCard = document.createElement('div');
+            testimonialCard.className = 'testimonial-card';
+            
+            // Generate random image
+            const randomSeed = Math.random().toString(36).substring(7);
+            const imageUrl = `https://picsum.photos/seed/${randomSeed}/100/100.jpg`;
+            
+            testimonialCard.innerHTML = `
+                <p class="testimonial-text">${text}</p>
+                <div class="testimonial-author">
+                    <img src="${imageUrl}" alt="${name}" class="author-img">
+                    <div class="author-info">
+                        <h4>${name}</h4>
+                        <span>${position}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Add to testimonial container
+            document.getElementById('testimonialContainer').appendChild(testimonialCard);
+            
+            // Close modal
+            modal.style.display = 'none';
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            const successMsg = document.createElement('div');
+            successMsg.style.position = 'fixed';
+            successMsg.style.top = '20px';
+            successMsg.style.right = '20px';
+            successMsg.style.background = 'var(--success)';
+            successMsg.style.color = 'white';
+            successMsg.style.padding = '15px 25px';
+            successMsg.style.borderRadius = '5px';
+            successMsg.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            successMsg.style.zIndex = '10000';
+            successMsg.textContent = '¡Testimonio enviado con éxito! Gracias por compartir tu experiencia.';
+            
+            document.body.appendChild(successMsg);
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMsg.remove();
+            }, 5000);
+        });
+        
+        // Load testimonials from localStorage on page load
+        window.addEventListener('load', function() {
+            const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+            const testimonialContainer = document.getElementById('testimonialContainer');
+            
+            testimonials.forEach(testimonial => {
+                const testimonialCard = document.createElement('div');
+                testimonialCard.className = 'testimonial-card';
+                
+                // Generate random image
+                const randomSeed = Math.random().toString(36).substring(7);
+                const imageUrl = `https://picsum.photos/seed/${randomSeed}/100/100.jpg`;
+                
+                testimonialCard.innerHTML = `
+                    <p class="testimonial-text">${testimonial.text}</p>
+                    <div class="testimonial-author">
+                        <img src="${imageUrl}" alt="${testimonial.name}" class="author-img">
+                        <div class="author-info">
+                            <h4>${testimonial.name}</h4>
+                            <span>${testimonial.position}</span>
+                        </div>
+                    </div>
+                `;
+                
+                testimonialContainer.appendChild(testimonialCard);
+            });
+        });
+    </script>
+</body>
+</html>
